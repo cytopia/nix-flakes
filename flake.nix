@@ -16,8 +16,8 @@
           pkgs = import nixpkgs { inherit system; };
         in
         {
-          # --- Terraform 1.1.0 ---
-          "terraform-1-1-0" = pkgs.stdenv.mkDerivation {
+          # --- Terraform v1.1.0 ---
+          "terraform@1.1.0" = pkgs.stdenv.mkDerivation {
             pname = "terraform";
             version = "1.1.0";
             src = pkgs.fetchurl (
@@ -44,8 +44,8 @@
             '';
           };
 
-          # --- Terragrunt 0.98.0 ---
-          "terragrunt-0-98-0" = pkgs.stdenv.mkDerivation {
+          # --- Terragrunt v0.98.0 ---
+          "terragrunt@0.98.0" = pkgs.stdenv.mkDerivation {
             pname = "terragrunt";
             version = "0.98.0";
             src = pkgs.fetchurl (
