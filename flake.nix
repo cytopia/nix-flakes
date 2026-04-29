@@ -70,6 +70,26 @@
               chmod +x $out/bin/terragrunt
             '';
           };
+          # ---- Terragrunt Atlantis Config v1.21.1
+          "terragrunt-atlantis-config-1-21-1" = pkgs.stdenv.mkDerivation {
+            pname = "terragrunt-atlantis-config";
+            version = "1.21.1";
+            src = pkgs.fetchurl (
+              if system == "x86_64-linux" then {
+                url = "https://github.com/transcend-io/terragrunt-atlantis-config/releases/download/v1.21.1/terragrunt-atlantis-config_1.21.1_linux_amd64";
+                sha256 = "1303113ca64edff78f0861d53eea680552bf79729b3ec605f1f4ed8b81b5a37b";
+              } else { # aarch64-darwin
+                url = "";
+                sha256 = "";
+              }
+            );
+            dontUnpack = true;
+            installPhase = ''
+              mkdir -p $out/bin
+              cp $src $out/bin/terragrunt-atlantis-config
+              chmod +x $out/bin/terragrunt-atlantis-config
+            '';
+          };
         }
       );
     };
