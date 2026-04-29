@@ -90,26 +90,6 @@
               chmod +x $out/bin/terragrunt-atlantis-config
             '';
           };
-          # ---- yq 4.53.2
-          "yq-4-53-2" = pkgs.stdenv.mkDerivation {
-            pname = "yq";
-            version = "4.53.2";
-            src = pkgs.fetchurl (
-              if system == "x86_64-linux" then {
-                url = "https://github.com/mikefarah/yq/releases/download/v4.53.2/yq_linux_amd64";
-                sha256 = "d56bf5c6819e8e696340c312bd70f849dc1678a7cda9c2ad63eebd906371d56b";
-              } else { # aarch64-darwin
-                url = "";
-                sha256 = "";
-              }
-            );
-            dontUnpack = true;
-            installPhase = ''
-              mkdir -p $out/bin
-              cp $src $out/bin/yq
-              chmod +x $out/bin/yq
-            '';
-          };
         }
       );
     };
